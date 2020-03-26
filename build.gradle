@@ -19,10 +19,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'joda-time:joda-time:2.10.5'
 	implementation 'org.projectlombok:lombok:1.18.12'
-	runtimeOnly 'mysql:mysql-connector-java'
+	implementation 'mysql:mysql-connector-java'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+//	testImplementation 'com.h2database:h2'
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 

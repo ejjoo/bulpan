@@ -1,10 +1,12 @@
-package net.ejjoo.bulpan.Model;
+package net.ejjoo.bulpan.post;
 
-import org.joda.time.DateTime;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 public class Post {
@@ -16,9 +18,11 @@ public class Post {
 
 	private String content;
 
-	private DateTime createDtm;
+	@CreationTimestamp
+	private LocalDateTime createDtm;
 
-	private DateTime modifyDtm;
+	@UpdateTimestamp
+	private LocalDateTime modifyDtm;
 
 	public int getId() {
 		return id;
@@ -44,19 +48,19 @@ public class Post {
 		this.content = content;
 	}
 
-	public DateTime getCreateDtm() {
+	public LocalDateTime getCreateDtm() {
 		return createDtm;
 	}
 
-	public void setCreateDtm(DateTime createDtm) {
+	public void setCreateDtm(LocalDateTime createDtm) {
 		this.createDtm = createDtm;
 	}
 
-	public DateTime getModifyDtm() {
+	public LocalDateTime getModifyDtm() {
 		return modifyDtm;
 	}
 
-	public void setModifyDtm(DateTime modifyDtm) {
+	public void setModifyDtm(LocalDateTime modifyDtm) {
 		this.modifyDtm = modifyDtm;
 	}
 }

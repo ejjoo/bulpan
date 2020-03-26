@@ -3,5 +3,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3306/bulpan
+    url: jdbc:mysql://localhost:3306/bulpan?characterEncoding=UTF-8&serverTimezone=UTC
     username: ejjoo
+
