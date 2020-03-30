@@ -3,9 +3,7 @@ package net.ejjoo.bulpan.post;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,6 +14,8 @@ public class Post {
 
 	private String title;
 
+	@Basic(fetch = FetchType.LAZY)
+	@Column(columnDefinition = "TEXT")
 	private String content;
 
 	@CreationTimestamp

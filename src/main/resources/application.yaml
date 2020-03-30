@@ -1,8 +1,12 @@
 spring:
+  profile: local
+---
+spring:
+  profiles: local
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+    show-sql: true
   datasource:
     url: jdbc:mysql://localhost:3306/bulpan?characterEncoding=UTF-8&serverTimezone=UTC
     username: ejjoo
-
