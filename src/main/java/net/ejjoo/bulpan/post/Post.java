@@ -1,12 +1,14 @@
 package net.ejjoo.bulpan.post;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Proxy;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Proxy
 public class Post {
 	@Id
 	@GeneratedValue
