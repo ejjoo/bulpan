@@ -30,7 +30,7 @@ public class PostControllerTest {
 	}
 	@Test
 	public void welcome() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/")
+		mockMvc.perform(MockMvcRequestBuilders.get("/post/list")
 				.accept(MediaType.APPLICATION_JSON))
 				.andDo(print())
 				.andExpect(status().isOk());
