@@ -6,7 +6,7 @@ spring:
   profiles: local
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
     show-sql: true
   datasource:
     url: jdbc:mysql://localhost:3306/bulpan?characterEncoding=UTF-8&serverTimezone=UTC
