@@ -3,6 +3,8 @@ spring:
     active: local
 ---
 spring:
+  thymeleaf:
+    cache: false
   profiles: local
   jpa:
     hibernate:

@@ -20,6 +20,7 @@ dependencies {
 	implementation 'joda-time:joda-time:2.10.5'
 	implementation 'org.projectlombok:lombok:1.18.12'
 	implementation 'mysql:mysql-connector-java'
+	runtime 'org.springframework.boot:spring-boot-devtools'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
