@@ -3,12 +3,15 @@ spring:
     active: local
 ---
 spring:
+  profiles: local
+  devtools:
+    restart:
+      enabled: true
   thymeleaf:
     cache: false
-  profiles: local
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     show-sql: true
   datasource:
     url: jdbc:mysql://localhost:3306/bulpan?characterEncoding=UTF-8&serverTimezone=UTC

@@ -4,14 +4,17 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("post")
 public class PostController {
 	public static final String VIEW_LIST = "list";
 	public static final String VIEW_FORM = "form";
+	public static final String VIEW_POST = "post";
 
 	private final PostService postService;
 
@@ -24,6 +27,12 @@ public class PostController {
 		return VIEW_FORM;
 	}
 
+	@GetMapping("{id}")
+	public String itemView(@PathVariable String id, ModelMap modelMap) {
+		modelMap.put("post", postService.getPost(Integer.valueOf(id)));
+		return VIEW_POST;
+	}
+
 	@GetMapping("list")
 	public String list(ModelMap modelMap) {
 		modelMap.put("list", postService.getListAll());
@@ -31,8 +40,8 @@ public class PostController {
 	}
 
 	@PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-	public String post(Post post) {
+	public RedirectView post(Post post) {
 		postService.createPost(post);
-		return "redirect:" + VIEW_LIST;
+		return new RedirectView("post/list");
 	}
 }
