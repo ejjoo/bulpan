@@ -14,6 +14,7 @@ public class Post {
 	@GeneratedValue
 	private int id;
 
+	@Column(nullable = false)
 	private String title;
 
 	@Basic(fetch = FetchType.LAZY)
