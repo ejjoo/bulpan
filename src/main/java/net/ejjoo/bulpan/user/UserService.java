@@ -1,5 +1,6 @@
 package net.ejjoo.bulpan.user;
 
+import net.ejjoo.bulpan.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserService {

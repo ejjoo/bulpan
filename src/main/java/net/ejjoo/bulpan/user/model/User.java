@@ -1,15 +1,13 @@
-package net.ejjoo.bulpan.user;
+package net.ejjoo.bulpan.user.model;
 
 import net.ejjoo.bulpan.user.validator.ValidEmail;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Proxy;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Entity
 @Proxy
@@ -80,4 +78,11 @@ public class User {
 	public void setUpdateDtm(LocalDateTime updateDtm) {
 		this.updateDtm = updateDtm;
 	}
+
+	//todo: create role scheme, and make a relation for the role table.
+//	@OneToMany()
+	public Iterable<String> getRoles() {
+		return new ArrayList<>();
+	}
+
 }
