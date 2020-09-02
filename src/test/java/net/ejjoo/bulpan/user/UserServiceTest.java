@@ -1,6 +1,6 @@
 package net.ejjoo.bulpan.user;
 
-import net.ejjoo.bulpan.user.model.UserSignUpDto;
+import net.ejjoo.bulpan.user.model.SignUpDto;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,26 +14,26 @@ public class UserServiceTest {
 	@Autowired
 	private UserAuthService userAuthService;
 
-	private UserSignUpDto userSignUpDto;
+	private SignUpDto signUpDto;
 	public UserServiceTest() {
-		userSignUpDto = new UserSignUpDto();
-		userSignUpDto.setEmail("test@test.com");
-		userSignUpDto.setNickname("test");
-		userSignUpDto.setPassword("test123!@#");
-		userSignUpDto.setMatchingPassword(userSignUpDto.getPassword());
+		signUpDto = new SignUpDto();
+		signUpDto.setEmail("test@test.com");
+		signUpDto.setNickname("test");
+		signUpDto.setPassword("test123!@#");
+		signUpDto.setMatchingPassword(signUpDto.getPassword());
 	}
 
 	@Test
 	@Order(1)
 	public void signUp() throws Exception {
-		userAuthService.signUp(userSignUpDto);
-		Assertions.assertTrue(userAuthService.emailExists(userSignUpDto.getEmail()));
+		userAuthService.signUp(signUpDto);
+		Assertions.assertTrue(userAuthService.emailExists(signUpDto.getEmail()));
 	}
 
 	@Test
 	@Order(2)
 	public void signIn() {
-		Assertions.assertTrue(userAuthService.signIn(userSignUpDto.getEmail(), userSignUpDto.getPassword()));
-		Assertions.assertFalse(userAuthService.signIn(userSignUpDto.getEmail(), userSignUpDto.getPassword() + "1"));
+		Assertions.assertTrue(userAuthService.signIn(signUpDto.getEmail(), signUpDto.getPassword()));
+		Assertions.assertFalse(userAuthService.signIn(signUpDto.getEmail(), signUpDto.getPassword() + "1"));
 	}
 }

@@ -1,8 +1,8 @@
-package net.ejjoo.bulpan.user;
+package net.ejjoo.bulpan.user.model;
 
 import net.ejjoo.bulpan.user.validator.ValidEmail;
 
-public class UserDto {
+public class LoginDto {
 	@ValidEmail
 	private String email;
 

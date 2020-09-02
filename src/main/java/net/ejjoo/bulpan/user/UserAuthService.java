@@ -1,11 +1,8 @@
 package net.ejjoo.bulpan.user;
 
-import net.ejjoo.bulpan.config.EncoderConfig;
 import net.ejjoo.bulpan.user.model.User;
-import net.ejjoo.bulpan.user.model.UserSignUpDto;
+import net.ejjoo.bulpan.user.model.SignUpDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -59,22 +56,22 @@ public class UserAuthService implements UserDetailsService {
 	}
 
 
-	public void signUp(UserSignUpDto userSignUpDto) throws Exception {
-		validateSignUpDto(userSignUpDto);
+	public void signUp(SignUpDto signUpDto) throws Exception {
+		validateSignUpDto(signUpDto);
 
 		User user = new User();
-		user.setEmail(userSignUpDto.getEmail());
-		user.setNickname(userSignUpDto.getNickname());
-		user.setPassword(passwordEncoder.encode(userSignUpDto.getPassword()));
+		user.setEmail(signUpDto.getEmail());
+		user.setNickname(signUpDto.getNickname());
+		user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
 		userRepository.save(user);
 	}
 
-	private boolean validateSignUpDto(UserSignUpDto userSignUpDto) throws Exception {
-		if (emailExists(userSignUpDto.getEmail())) {
+	private boolean validateSignUpDto(SignUpDto signUpDto) throws Exception {
+		if (emailExists(signUpDto.getEmail())) {
 			throw new Exception();
 		}
 
-		if (!userSignUpDto.getPassword().equals(userSignUpDto.getMatchingPassword())) {
+		if (!signUpDto.getPassword().equals(signUpDto.getMatchingPassword())) {
 			throw new Exception();
 		}
 
